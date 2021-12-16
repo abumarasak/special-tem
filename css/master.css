@@ -85,8 +85,8 @@ body {
 .settings-box .option-box .colors-list li:last-child {
   background-color: #4caf50;
 }
-.settings-box .random-backgrounds .yes,
-.settings-box .random-backgrounds .no {
+.settings-box .option-box .yes,
+.settings-box .option-box .no {
   width: 50px;
   color: #fff;
   margin-top: 10px;
@@ -97,12 +97,59 @@ body {
   cursor: pointer;
   border-radius: 4px;
   opacity: 0.5;
-  background-color: #009688;
+  background-color: var(--main-color);
 }
-.settings-box .random-backgrounds span.active {
+.settings-box .option-box span.active {
   opacity: 1;
 }
 /*  End Settings Box */
+/* Start Nav Bullets */
+.nav-bullets {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  z-index: 1000;
+}
+.nav-bullets .bullet {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--main-color);
+  margin: 20px auto;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+.nav-bullets .bullet .tooltip {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 8px 10px;
+  position: absolute;
+  right: 32px;
+  top: -10px;
+  width: 120px;
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+  display: none;
+}
+.nav-bullets .bullet:hover .tooltip {
+  display: block;
+}
+.nav-bullets .bullet .tooltip::before {
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent transparent var(--main-color);
+  height: 0;
+  width: 0;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* End Nav Bullets */
 /* Start Landing Page */
 .landing-page {
   min-height: 100vh;
@@ -488,11 +535,11 @@ body {
 /* End Features */
 /* Start Testimonials */
 .testimonials {
-  height: 600px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   position: relative;
-  /* background-color: violet; */
 }
-/* .testimonials:before {
+.testimonials:before {
   content: "";
   width: 50%;
   position: absolute;
@@ -509,14 +556,48 @@ body {
   top: 0;
   background-color: #333;
   height: 100%;
-} */
+}
 .testimonials h2 {
   font-weight: bold;
   font-size: 30px;
   color: #fff;
   margin: 0 0 60px;
-  text-align: center;
+  text-align: left;
   position: relative;
   z-index: 2;
+}
+.testimonials .ts-box {
+  position: relative;
+  z-index: 2;
+  width: calc(98% / 3);
+  float: left;
+  background-color: #fff;
+  padding: 20px;
+}
+.testimonials .ts-box:not(:last-of-type) {
+  margin-right: 1%;
+}
+.testimonials .ts-box > p {
+  margin: 0 0 20px;
+  line-height: 1.5;
+  font-size: 18px;
+  color: #707070;
+  font-style: italic;
+}
+.testimonials .ts-box .person-info {
+  overflow: hidden;
+}
+.testimonials .ts-box .person-info img {
+  width: 80px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 20px;
+}
+.testimonials .ts-box .person-info h4 {
+  margin: 14px 0 10px;
+}
+.testimonials .ts-box .person-info p {
+  color: #707070;
+  margin: 0;
 }
 /* End Testimonials */

@@ -47,9 +47,38 @@
             <span class="no" data-background="no">No</span>
           </div>
         </div>
+        <div class="option-box">
+          <h4>Show Bullets</h4>
+          <div class="bullets-option">
+            <span class="yes active" data-display="show">Show</span>
+            <span class="no" data-display="hide">Hide</span>
+          </div>
+        </div>
       </div>
     </div>
     <!-- End Settings Box -->
+    <!-- Start Nav Bullets -->
+    <div class="nav-bullets">
+      <div class="bullet" data-section=".about-us">
+        <div class="tooltip" > About Us</div>
+      </div>
+      <div class="bullet" data-section=".skills">
+        <div class="tooltip" > Our Skills</div>
+      </div>
+      <div class="bullet" data-section=".gallery">
+        <div class="tooltip"> Our Gallery</div>
+      </div>
+      <div class="bullet" data-section=".timeline">
+        <div class="tooltip"> Timeline</div>
+      </div>
+      <div class="bullet" data-section=".features">
+        <div class="tooltip"> Features</div>
+      </div>
+      <div class="bullet" data-section=".testimonials">
+        <div class="tooltip"> Testimonials</div>
+      </div>
+    </div>
+    <!-- End Nav Bullets -->
     <!-- Start Landing Page -->
     <div class="landing-page">
       <div class="overlay"></div>
@@ -57,10 +86,12 @@
         <div class="header-area">
           <div class="logo">Special Design</div>
           <ul class="links">
-            <li><a href="#about" class="active">About</a></li>
-            <li><a href="#service">Service</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" data-section=".about-us">About</a></li>
+            <li><a href="#" data-section=".skills">Skills</a></li>
+            <li><a href="#" data-section=".gallery">Gallery</a></li>
+            <li><a href="#" data-section=".features">Features</a></li>
+            <li><a href="#" data-section=".timeline">Timeline</a></li>
+            <li><a href="#" data-section=".testimonials">Testimonials</a></li>
           </ul>
         </div>
       </div>
@@ -263,20 +294,51 @@
             time.
           </p>
         </div>
-        <div class="clear-fix"></div>
+        <div class="clearfix"></div>
       </div>
     </div>
+
     <!-- End Features -->
 
     <!-- Start Testimonials -->
-    <!-- <div class="testimonials">
-      <h2>Testimonials</h2>
-      <div class="testimonials-content">
-        <div class="ts-box">Test</div>
-        <div class="ts-box">Test</div>
-        <div class="ts-box">Test</div>
+    <div class="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <div class="ts-box">
+          <p>
+            Iam very happy with the product it's amazing and i recieve it very
+            fast and the price was amazing
+          </p>
+          <div class="person-info">
+            <img src="./imgs/avatar-01.png" alt="" />
+            <h4>Persone One</h4>
+            <p>CEO At Company</p>
+          </div>
+        </div>
+        <div class="ts-box">  
+          <p>
+            Iam very happy with the product it's amazing and i recieve it very
+            fast and the price was amazing
+          </p>
+          <div class="person-info">
+            <img src="./imgs/avatar-02.png" alt="" />
+            <h4>Persone Two</h4>
+            <p>CEO At Company</p>
+          </div>
+        </div>
+        <div class="ts-box">     
+        <p>
+          Iam very happy with the product it's amazing and i recieve it very
+          fast and the price was amazing
+        </p>
+        <div class="person-info">
+          <img src="./imgs/avatar-03.png" alt="" />
+          <h4>Persone Three</h4>
+          <p>CEO At Company</p>
+        </div>
       </div>
-    </div> -->
+    </div>
+    <div class="clearfix"></div>
     <!-- End Testimonials -->
     <script src="./js/master.js"></script>
   </body>

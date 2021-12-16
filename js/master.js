@@ -1,11 +1,27 @@
-// Check if there's Local Storage Color Option
+/////////////////// Variable //////////////////
+
+// Select Landing Page Element
+let landingPage = document.querySelector(".landing-page");
+// Get Array Of Images
+let imgsArray = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"];
+// Select Skills Selector
+let ourSkills = document.querySelector(".skills");
+// Create Popup With Image
+let OurGallery = document.querySelectorAll(".gallery  img");
+// Select All Bullets
+const allBullets = document.querySelectorAll(".nav-bullets .bullet");
+// Select All Header Links
+const allLinks = document.querySelectorAll(".links  a");
+let bulletsSpan = document.querySelectorAll(".bullets-option span");
+let bulletsContainer = document.querySelector(".nav-bullets");
+let bulletLocalItem = localStorage.getItem("bullets_option");
+
+//////////////////////////////////////////////////
+
+///////////////////// Colors Root ////////////////////
 let mainColor = localStorage.getItem("color_option");
-
 if (mainColor !== null) {
-  //   console.log("Local Storage Is Not Empty");
-  //   console.log(localStorage.getItem("color_option"));
   document.documentElement.style.setProperty("--main-color", mainColor);
-
   // Remove Active Class From All Colors List Item
   document.querySelectorAll(".colors-list li").forEach((element) => {
     element.classList.remove("active");
@@ -16,43 +32,6 @@ if (mainColor !== null) {
     }
   });
 }
-
-// Random Background Option
-let backgroundOption = true;
-
-// variable To Control the Interval
-let backgroundInterval;
-
-// check if there's local storage random background  item
-let backgroundLocalItem = localStorage.getItem("background-option");
-
-// Check if random background local storage not empty
-if (backgroundLocalItem !== null) {
-  if (backgroundLocalItem === "true") {
-    backgroundOption = true;
-  } else {
-    backgroundOption = false;
-  }
-  // Remove active class from all spans
-  document.querySelectorAll(".random-backgrounds span").forEach((element) => {
-    element.classList.remove("active");
-  });
-  if (backgroundLocalItem === "true") {
-    document.querySelector(".random-backgrounds .yes").classList.add("active");
-  } else {
-    document.querySelector(".random-backgrounds .no").classList.add("active");
-  }
-}
-
-// Toggle Spin Class On Icon
-document.querySelector(".toggle-settings i").onclick = function () {
-  // Toggle Class fa-spin for Rotation on Self
-  this.classList.toggle("fa-spin");
-  //Toggle Class Open on Main Setting  box
-  document.querySelector(".settings-box").classList.toggle("open");
-};
-/////////////////////////////////////////////////
-
 // Switch Colors
 const colorsLi = document.querySelectorAll(".colors-list li");
 // Loop On All List Item
@@ -67,26 +46,43 @@ colorsLi.forEach((li) => {
     // Set Color on Local Storage
     localStorage.setItem("color_option", e.target.dataset.color);
 
-    // Remove Active Class From All children
-    e.target.parentElement.querySelectorAll(".active").forEach((element) => {
-      element.classList.remove("active");
-    });
-    // Add active class on self
-    e.target.classList.add("active");
+    handleActive(e);
   });
 });
+/////////////// Random Background ////////////////////////////////////////////////////
+
+// Random Background Option
+let backgroundOption = true;
+
+// variable To Control the Interval
+let backgroundInterval;
+
+// check if there's local storage random background  item
+let backgroundLocalItem = localStorage.getItem("background-option");
+
+// Remove active class from all spans
+document.querySelectorAll(".random-backgrounds span").forEach((element) => {
+  element.classList.remove("active");
+});
+
+// Check if random background local storage not empty
+if (backgroundLocalItem !== null) {
+  if (backgroundLocalItem === "true") {
+    backgroundOption = true;
+    document.querySelector(".random-backgrounds .yes").classList.add("active");
+  } else {
+    backgroundOption = false;
+    document.querySelector(".random-backgrounds .no").classList.add("active");
+  }
+}
 // Switch random Background
 const randomBackEl = document.querySelectorAll(".random-backgrounds span");
 // Loop On All List spans
 randomBackEl.forEach((span) => {
   // Click On Every span
   span.addEventListener("click", (e) => {
-    // Remove Active Class From All span
-    e.target.parentElement.querySelectorAll(".active").forEach((element) => {
-      element.classList.remove("active");
-    });
-    // Add active class on self
-    e.target.classList.add("active");
+    handleActive(e);
+
     if (e.target.dataset.background === "yes") {
       backgroundOption = true;
       randomizeImgs();
@@ -98,13 +94,6 @@ randomBackEl.forEach((span) => {
     }
   });
 });
-
-///////////////////////////////////////////////////
-// Select Landing Page Element
-let landingPage = document.querySelector(".landing-page");
-// Get Array Of Images
-let imgsArray = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"];
-
 // Function To Randomize Imgs
 function randomizeImgs() {
   if (backgroundOption === true) {
@@ -117,9 +106,21 @@ function randomizeImgs() {
   }
 }
 randomizeImgs();
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Select Skills Selector
-let ourSkills = document.querySelector(".skills");
+///////////////////// Settings Page ////////////////////////
+
+// Toggle Spin Class On Icon
+document.querySelector(".toggle-settings i").onclick = function () {
+  // Toggle Class fa-spin for Rotation on Self
+  this.classList.toggle("fa-spin");
+  //Toggle Class Open on Main Setting  box
+  document.querySelector(".settings-box").classList.toggle("open");
+};
+
+//////////////////////////////////////////////////////////////////
+
+//////////////////////// Skills Animation ////////////////////////////////
 
 window.onscroll = function () {
   // Skills of Set Top
@@ -144,8 +145,9 @@ window.onscroll = function () {
   }
 };
 
-// Create Popup With Image
-let OurGallery = document.querySelectorAll(".gallery  img");
+//////////////////////////////////////////////////////
+
+//////////////////////// Gallery Page ////////////////////
 
 OurGallery.forEach((img) => {
   img.addEventListener("click", (e) => {
@@ -213,3 +215,63 @@ document.addEventListener("click", function (e) {
     document.querySelector(".popup-overlay").remove();
   }
 });
+
+//////////////////////////////////////////////////////////////////
+
+////////////////// Scroll Function//////////////////
+
+function scrollToSomewhere(element) {
+  element.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector(e.target.dataset.section).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+}
+scrollToSomewhere(allBullets);
+scrollToSomewhere(allLinks);
+///////////////////////////////////////////////////
+
+/////////////////////// Handle Active State /////////////////////////
+
+function handleActive(ev) {
+  // Remove Active Class From All span
+  ev.target.parentElement.querySelectorAll(".active").forEach((element) => {
+    element.classList.remove("active");
+  });
+  // Add active class on self
+  ev.target.classList.add("active");
+}
+
+//////////////////////////////////////////////////////////////////////
+
+////////////////////// NAV Bullets //////////////////////
+
+if (bulletLocalItem !== null) {
+  bulletsSpan.forEach((span) => {
+    span.classList.remove("active");
+  });
+  if (bulletLocalItem === "block") {
+    bulletsContainer.style.display = "block";
+    document.querySelector(".bullets-option .yes").classList.add("active");
+  } else {
+    bulletsContainer.style.display = "none";
+    document.querySelector(".bullets-option .no").classList.add("active");
+  }
+}
+bulletsSpan.forEach((span) => {
+  span.addEventListener("click", (e) => {
+    if (span.dataset.display === "show") {
+      bulletsContainer.style.display = "block";
+      localStorage.setItem("bullets_option", "block");
+    } else {
+      bulletsContainer.style.display = "none";
+      localStorage.setItem("bullets_option", "none");
+    }
+    handleActive(e);
+  });
+});
+
+///////////////////////////////////////////
