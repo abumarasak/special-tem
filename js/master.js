@@ -181,6 +181,7 @@ OurGallery.forEach((img) => {
 
     // Set Image Source
     popupImage.src = img.src;
+    console.log(popupImage.src);
 
     // Add Image To Popup Box
     popupBox.appendChild(popupImage);
