@@ -61,9 +61,11 @@ let backgroundInterval;
 let backgroundLocalItem = localStorage.getItem("background-option");
 
 // Remove active class from all spans
-document.querySelectorAll(".random-backgrounds span").forEach((element) => {
-  element.classList.remove("active");
-});
+if (localStorage.getItem("background-option") !== null) {
+  document.querySelectorAll(".random-backgrounds span").forEach((element) => {
+    element.classList.remove("active");
+  });
+}
 
 // Check if random background local storage not empty
 if (backgroundLocalItem !== null) {
@@ -102,7 +104,7 @@ function randomizeImgs() {
       let randomNumber = Math.floor(Math.random() * imgsArray.length);
       // Change Background Image Url
       landingPage.style.backgroundImage = `url("imgs/${imgsArray[randomNumber]}")`;
-    }, 10000);
+    }, 5000);
   }
 }
 randomizeImgs();
@@ -275,3 +277,13 @@ bulletsSpan.forEach((span) => {
 });
 
 ///////////////////////////////////////////
+
+///////////// Reset Settins //////////////////
+document.querySelector(".reset-options").onclick = function () {
+  localStorage.removeItem("bullets_option");
+  localStorage.removeItem("color_option");
+  localStorage.removeItem("background-option");
+
+  // Relode Window
+  window.location.reload();
+};
