@@ -287,3 +287,33 @@ document.querySelector(".reset-options").onclick = function () {
   // Relode Window
   window.location.reload();
 };
+
+////////////////////////////////////////////////////
+
+/////////////// Toggle Menu //////////////////////
+
+let toggleBtn = document.querySelector(".toggle-menu");
+let tLinks = document.querySelector(".links");
+
+toggleBtn.onclick = function (e) {
+  // Stop Propagation
+  e.stopPropagation();
+  this.classList.toggle("menu-active");
+  tLinks.classList.toggle("open");
+};
+
+// Click Anywhere outside Menu And Toggle Button
+
+document.addEventListener("click", (e) => {
+  if (e.target !== toggleBtn && e.target !== tLinks) {
+    if (tLinks.classList.contains("open")) {
+      toggleBtn.classList.remove("menu-active");
+      tLinks.classList.remove("open");
+    }
+  }
+});
+
+// Stop Propagation on Links
+tLinks.onclick = function (e) {
+  e.stopPropagation();
+};

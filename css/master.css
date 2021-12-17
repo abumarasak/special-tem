@@ -9,7 +9,7 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 .container {
-  width: 1170px;
+  /* width: 1170px; */
   padding-left: 15px;
   padding-right: 15px;
   margin: auto;
@@ -189,13 +189,13 @@ body {
   padding: 15px;
   font-weight: bold;
 }
-.header-area .links {
-  list-style: none;
+.header-area .links-container {
   width: 100%;
   text-align: right;
+}
+.header-area .links {
+  list-style: none;
   padding-left: 0;
-  padding-right: 20px;
-  font-size: 15px;
 }
 .header-area .links li {
   display: inline-block;
@@ -211,6 +211,35 @@ body {
 .header-area .links li a.active {
   color: var(--main-color);
 }
+.header-area .toggle-menu {
+  background: none;
+  border: none;
+  width: 40px;
+  cursor: pointer;
+  margin-top: 15px;
+  display: none;
+  transition: all 0.5s;
+  position: relative;
+}
+.header-area .toggle-menu.menu-active::before {
+  content: "";
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+}
+.header-area .toggle-menu:focus {
+  outline: none;
+}
+.header-area .toggle-menu span {
+  background: #fff;
+  display: block;
+  height: 4px;
+  margin-bottom: 4px;
+}
+
 .introduction-text {
   position: absolute;
   left: 50%;
@@ -232,6 +261,33 @@ body {
   line-height: 1.6;
   font-size: 20px;
   margin: 0;
+}
+@media (max-width: 992px) {
+  .header-area .links {
+    display: none;
+  }
+  .header-area .toggle-menu {
+    display: inline-block;
+  }
+  .header-area .links.open {
+    background: #fff;
+    padding: 20px;
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    border-radius: 4px;
+    text-align: left;
+    z-index: 200;
+  }
+  .header-area .links.open li {
+    display: block;
+    margin: 10px;
+  }
+  .header-area .links.open li a {
+    color: var(--main-color);
+  }
 }
 /* End Landing Page */
 /* Start About Us */
@@ -613,3 +669,105 @@ body {
   margin: 0;
 }
 /* End Testimonials */
+/* Start Contact us */
+.contact {
+  min-height: 600px;
+  background-image: url("../imgs/contact.jpg");
+  background-size: cover;
+  padding-top: 60px;
+  padding-bottom: 80px;
+  position: relative;
+}
+.contact .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.contact .container {
+  position: relative;
+  z-index: 2;
+}
+.contact h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--main-color);
+  margin: 0 0 60px;
+  text-align: center;
+}
+.contact form {
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+.contact form .left {
+  float: left;
+  width: 49%;
+}
+.contact form .right {
+  float: right;
+  width: 49%;
+}
+.contact form input:not([type="submit"]),
+.contact form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  background-color: rgba(218, 218, 218, 0.19);
+}
+.contact form input:not([type="submit"]):focus,
+.contact form textarea:focus {
+  outline: none;
+}
+.contact form input {
+  height: 40px;
+}
+.contact form textarea {
+  height: 150px;
+  resize: none;
+}
+.contact form input[type="submit"] {
+  padding: 10px;
+  width: 100%;
+  border-color: transparent;
+  background-color: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}
+.contact form textarea:focus::-webkit-input-placeholder,
+.contact form input:not([type="submit"]):focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: 0.3s;
+}
+/* End Contact us */
+
+/* Start Grid System */
+/* Small Devices => Landscape phones */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+/* Medium Devices => Tablets */
+@media (min-width: 786px) {
+  .container {
+    max-width: 720px;
+  }
+}
+/* Desktops  */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+/* Large Screens  */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+/* End Grid System */
