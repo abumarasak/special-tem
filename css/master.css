@@ -177,6 +177,10 @@ body {
   top: 0;
   z-index: 1;
 }
+.landing-page .container {
+  position: relative;
+  z-index: 1000;
+}
 .header-area {
   position: relative;
   z-index: 2;
@@ -196,6 +200,8 @@ body {
 .header-area .links {
   list-style: none;
   padding-left: 0;
+  position: relative;
+  z-index: 1000;
 }
 .header-area .links li {
   display: inline-block;
@@ -248,7 +254,12 @@ body {
   z-index: 2;
   color: #fff;
   text-align: center;
-  width: 100%;
+  width: 95%;
+}
+@media (max-width: 575px) {
+  .introduction-text {
+    font-size: 26px;
+  }
 }
 .introduction-text h1 {
   font-size: 34px;
@@ -294,13 +305,23 @@ body {
 .about-us {
   padding-top: 50px;
   padding-bottom: 50px;
-}
-.about-us .container {
   display: flex;
 }
+@media (max-width: 767px) {
+  .about-us {
+    display: block;
+    text-align: center;
+  }
+}
+
 .about-us .info-box {
   flex: 1;
   padding: 30px;
+}
+@media (max-width: 767px) {
+  .about-us .info-box {
+    padding: 0;
+  }
 }
 .about-us .info-box h2 {
   font-weight: bold;
@@ -340,11 +361,22 @@ body {
   padding: 15px;
   margin-bottom: 15px;
 }
+@media (max-width: 767px) {
+  .skills .skill-box {
+    display: block;
+  }
+}
 .skills .skill-box .skill-name {
   font-weight: bold;
   width: 140px;
   text-align: center;
   line-height: 30px;
+}
+@media (max-width: 767px) {
+  .skills .skill-box .skill-name {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 .skills .skill-box .skill-progress {
   height: 30px;
@@ -368,7 +400,9 @@ body {
 .gallery {
   padding-top: 50px;
   padding-bottom: 50px;
+  text-align: center;
 }
+
 .gallery h2 {
   font-weight: bold;
   font-size: 30px;
@@ -417,9 +451,15 @@ body {
 .popup-box {
   text-align: center;
 }
+@media (max-width: 575px) {
+  .popup-box {
+    max-width: 90%;
+  }
+}
 .popup-box img {
   width: 100%;
 }
+
 .popup-box .close-button {
   position: absolute;
   top: -15px;
@@ -435,24 +475,6 @@ body {
   font-weight: bold;
   font-family: Arial, Tahoma;
   border-radius: 50%;
-}
-.popup-overlay .next-img {
-  font-size: 40px;
-  position: absolute;
-  top: 50%;
-  right: 30%;
-  cursor: pointer;
-  color: var(--main-color);
-  font-weight: bold;
-}
-.popup-overlay .prev {
-  font-size: 40px;
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  cursor: pointer;
-  color: var(--main-color);
-  font-weight: bold;
 }
 /* End Gallery */
 /* Start Timeline */
@@ -492,6 +514,21 @@ body {
   width: calc(50% - 25px);
   margin-bottom: 40px;
   position: relative;
+}
+@media (max-width: 767px) {
+  .timeline .timeline-content .left,
+  .timeline .timeline-content .right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .timeline .timeline-content .left::before,
+  .timeline .timeline-content .right::before {
+    display: none;
+  }
+  .timeline .timeline-content .left .content:before,
+  .timeline .timeline-content .right .content:before {
+    display: none;
+  }
 }
 .timeline .timeline-content .left {
   float: left;
@@ -575,6 +612,16 @@ body {
   text-align: center;
   margin-bottom: 40px;
 }
+@media (max-width: 991px) {
+  .features .feat-box {
+    width: calc(100% / 2);
+  }
+}
+@media (max-width: 575px) {
+  .features .feat-box {
+    width: 100%;
+  }
+}
 .features .feat-box img {
   width: 196px;
   border-radius: 6px;
@@ -634,6 +681,11 @@ body {
   position: relative;
   z-index: 2;
 }
+@media (max-width: 767px) {
+  .testimonials h2 {
+    text-align: center;
+  }
+}
 .testimonials .ts-box {
   position: relative;
   z-index: 2;
@@ -641,6 +693,14 @@ body {
   float: left;
   background-color: #fff;
   padding: 20px;
+}
+@media (max-width: 767px) {
+  .testimonials .ts-box {
+    width: 100%;
+    float: none;
+    margin-bottom: 15px;
+    text-align: center;
+  }
 }
 .testimonials .ts-box:not(:last-of-type) {
   margin-right: 1%;
@@ -655,11 +715,23 @@ body {
 .testimonials .ts-box .person-info {
   overflow: hidden;
 }
+@media (max-width: 991px) {
+  .testimonials .ts-box .person-info {
+    text-align: center;
+    overflow: visible;
+  }
+}
 .testimonials .ts-box .person-info img {
   width: 80px;
   border-radius: 50%;
   float: left;
   margin-right: 20px;
+}
+@media (max-width: 991px) {
+  .testimonials .ts-box .person-info img {
+    float: none;
+    margin-right: 0;
+  }
 }
 .testimonials .ts-box .person-info h4 {
   margin: 14px 0 10px;
@@ -706,9 +778,17 @@ body {
   float: left;
   width: 49%;
 }
+
 .contact form .right {
   float: right;
   width: 49%;
+}
+@media (max-width: 767px) {
+  .contact form .right,
+  .contact form .left {
+    float: none;
+    width: 100%;
+  }
 }
 .contact form input:not([type="submit"]),
 .contact form textarea {
@@ -744,7 +824,21 @@ body {
   transition: 0.3s;
 }
 /* End Contact us */
-
+/* Start Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.footer span.love {
+  color: #f00;
+}
+.footer span.name {
+  color: var(--main-color);
+}
+/* End Footer */
 /* Start Grid System */
 /* Small Devices => Landscape phones */
 @media (min-width: 576px) {

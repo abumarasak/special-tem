@@ -317,3 +317,15 @@ document.addEventListener("click", (e) => {
 tLinks.onclick = function (e) {
   e.stopPropagation();
 };
+
+////////////////////////////////
+let form = document.querySelectorAll("form input,textarea");
+
+form.forEach((input) => {
+  input.onblur = () => {
+    sessionStorage.setItem(input.className, input.value);
+  };
+  if (sessionStorage.getItem(input.className)) {
+    input.value = sessionStorage.getItem(input.className);
+  }
+});
